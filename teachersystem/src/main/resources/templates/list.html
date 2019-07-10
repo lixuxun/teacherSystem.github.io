@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en">
+
+<head>
+    <head th:replace="~{menu::head}">
+    </head>
+    <title>查询功能</title>
+</head>
+
+<body background="asserts/img/timg7BE4U3YK.jpg" style="background-size: 100%">
+<div th:replace="~{menu::topBar}"></div>
+
+<div th:replace="~{menu::menuBar}"></div>
+
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!--<h2><a class="btn btn-sm btn-success" th:href="@{/emp}">查询</a></h2>-->
+    <form method="get" th:action="getTeacherByIdOrName">
+        <input name="IdOrName" type="text" th:placeholder="输入id或者姓名查询">
+        <button class="btn btn-sm btn-primary" style="right: 0px" type="submit" th:text="查询"></button>
+    </form>
+
+    <div class="table-responsive" th:fragment="list">
+
+
+        <div class="main">
+            <!--头部-->
+            <div class="header">
+                <div class="head-nav">
+                    <div class="head-nav-con clearFloat">
+                        <ul>
+                            <li class="drop-down"><a href="#">工号</a>
+                            </li>
+                            <li class="drop-down"><a href="#">姓名</a>
+                            </li>
+                            <li class="drop-down"><a href="#">年龄</a>
+                            </li>
+                            <li class="drop-down"><a href="#">职称</a>
+                                <ul class="drop-down-content">
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=助理}">助理</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=讲师}">讲师</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=教授}">教授</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=副教授}">副教授</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">所在系</a>
+                                <ul class="drop-down-content">
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=计算机学院}">计算机学院</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=工商管理学院}">工商管理学院</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=机械工程学院}">机械工程学院</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">所授课程</a>
+                                <ul class="drop-down-content">
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=数据库}">数据库</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=网络通信}">网络通信</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=金融}">金融</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=软件}">软件</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=建筑}">建筑</a></li>
+                                    <li><a th:href="@{/getTeacherByKeyWord?KeyWord=会计}">会计</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down"><a href="#">联系电话</a>
+                            </li>
+                            <li class="drop-down"><a href="#">联系地址</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<td></td>-->
+        <!--<th>姓名</th>-->
+        <!--<th>年龄</th>-->
+        <!--<th>职称</th>-->
+        <!--<th>所在系</th>-->
+        <!--<th>所授课程</th>-->
+        <!--<th>联系电话</th>-->
+        <!--<th>联系地址</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <div style="height:500px">
+            <table class="table table-striped table-sm">
+                <tbody>
+                <tr th:each="teacher:${teachers}" th:if="${teachers!=null}">
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.id}"></td>
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.name}"></td>
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.age}"></td>
+                    <td style="width:12.5%;text-align: center" th:text="${teacher.title}"></td>
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.dept}"></td>
+                    <td style="width: 12.5%;text-align: center;" th:text="${teacher.course}"></td>
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.number}"></td>
+                    <td style="width: 12.5%;text-align: center" th:text="${teacher.address}"></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</div>
+</div>
+
+
+</body>
+
+</html>

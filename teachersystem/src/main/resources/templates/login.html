@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>登录</title>
+    <!-- Bootstrap core CSS  在外webjars引用-->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center" background="asserts/img/timg.jpg" style="background-size: 100% 100%;">
+<form class="form-signin" action="menu.html" th:action="@{/teacher/login}" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">教师管理系统</h1>
+    <!--判断加错误提示-->
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    <input name="username" type="text" class="form-control" placeholder="Username" required="" autofocus=""
+           th:placeholder="#{login.usename}">
+    <input name="password" type="password" class="form-control" placeholder="Password" required=""
+           th:placeholder="#{login.password}">
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me">[[#{login.remember}]]</label>
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    <a class="btn btn-sm" th:href="@{/menu.html(l='zh_CN')}">中文</a>
+    <a class="btn btn-sm" th:href="@{/menu.html(l='en_US')}">English</a>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en">
+<head>
+    <head th:replace="~{menu::head}">
+    </head>
+    <title>更新功能</title>
+</head>
+<body background="asserts/img/timgL7CT62XY.jpg" style="background-size: 100%">
+<div th:replace="~{menu::topBar}"></div>
+<div th:replace="~{menu::menuBar}"></div>
+
+</nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <h1 class="h3 mb-3 font-weight-normal ">教师修改页面</h1>
+    <form class="text-center" method="get" th:action="@{/updateTeacher}">
+        <input name="id" type="text" th:placeholder="请输入ID">
+        <button class="btn btn-sm btn-primary" style="right: 0px" type="submit" th:text="修改"></button>
+    </form>
+</main>
+</div>
+</div>
+
+
+</body>
+
+</html>

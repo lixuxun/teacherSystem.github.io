@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en">
+
+<head>
+    <head th:replace="~{menu::head}">
+    </head>
+    <title>添加功能</title>
+</head>
+
+<body background="asserts/img/timgZYSKSBFL.jpg" style="background-size: 100%">
+<div th:replace="~{menu::topBar}"></div>
+
+<div th:replace="~{menu::menuBar}"></div>
+
+</nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 text-cente">
+    <h1 class="h3 mb-3 font-weight-normal text-center" th:text="${updateTeacher==null}?'添加教师信息':'修改教师信息'">教师添加信息</h1>
+    <form class="text-center" th:action="@{/add}" method="post">
+        <!--form只提供get和post,只能用input且name必须为_method来指定value为put，从而会匹配PutMapping,但里面的url为form中的action的url-->
+        <input type="hidden" name="_method" th:value="put" th:if="${updateTeacher!=null}">
+        <!--<h1 class="h3 mb-3 font-weight-normal" th:text="${session.updateTeacher=null}?'添加教师信息':'修改教师信息'"></h1>-->
+        <div class="form-group">
+            <label>工号</label>
+            <input type="text" class="form-control-sm" name="id" th:placeholder="数字字符"
+                   th:value="${updateTeacher!=null}?${updateTeacher.id}">
+            <p style="color: red">[[${session.msgId != null}?${session.msgId}]]</p>
+
+        </div>
+        <div class="form-group">
+            <label>名字</label>
+            <input type="text" class="form-control-sm" name="name" th:placeholder="中文、英文或数字字符"
+                   th:value="${updateTeacher!=null}?${updateTeacher.name}">
+        </div>
+        <div class="form-group">
+            <label>年龄</label>
+            <input type="text" class="form-control-sm" name="age" th:placeholder="数字字符"
+                   th:value="${updateTeacher!=null}?${updateTeacher.age}">
+            <p style="color: red">[[${session.msgAge != null}?${session.msgAge}]]</p>
+        </div>
+        <div class="form-group">
+            <label>职称</label>
+            <!--<input type="text" class="form-control-sm"  name="title" th:placeholder="中文或英文字符" th:value="${updateTeacher!=null}?${updateTeacher.title}">-->
+            <select name="title" style="width: 148px;height:26px">
+                <!--th:text="${updateTeacher == null}?'&#45;&#45;请选择职称':${updateTeacher.title}"-->
+                <option value="">--请选择职称</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.title == '助理'} " value="助理">助理</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.title == '讲师'} " value="讲师">讲师</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.title == '教授'} " value="教授">教授</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.title == '副教授'} " value="副教授">副教授</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>属系</label>
+            <!--<input type="text" class="form-control-sm" name="dept" th:placeholder="中文或英文字符" th:value="${updateTeacher!=null}?${updateTeacher.dept}">-->
+            <select name="dept" style="width: 148px;height:26px">
+                <option value="">--请选择属系</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.dept == '计算机学院'} " value="计算机学院">计算机学院
+                </option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.dept == '工商管理学院'}" value="工商管理学院">工商管理学院
+                </option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.dept == '机械工程学院'}" value="机械工程学院">机械工程学院
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>授课</label>
+            <!--<input type="text" class="form-control-sm"  name="course" th:placeholder="中文或英文字符" th:value="${updateTeacher!=null}?${updateTeacher.course}">-->
+            <select name="course" style="width: 148px;height:26px">
+                <!--th:text="${updateTeacher == null}?'&#45;&#45;请选择职称':${updateTeacher.course}"-->
+                <option value="">--请选择授课类型</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '数据库'} " value="数据库">数据库</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '金融'} " value="金融">金融</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '会计'} " value="会计">会计</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '建筑'} " value="建筑">建筑</option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '网络通信'} " value="网络通信">网络通信
+                </option>
+                <option th:selected="${updateTeacher!=null}?${updateTeacher.course == '软件'} " value="软件">软件</option>
+            </select>
+            <p style="color: red">[[${session.msgTDC != null}?${session.msgTDC}]]</p>
+        </div>
+        <div class="form-group">
+            <label>电话</label>
+            <input type="text" class="form-control-sm" name="number" th:placeholder="数字字符"
+                   th:value="${updateTeacher!=null}?${updateTeacher.number}">
+            <p style="color: red">[[${session.msgNumber != null}?${session.msgNumber}]]</p>
+        </div>
+        <div class="form-group">
+            <label>地址</label>
+            <input type="text" class="form-control-sm" name="address" th:placeholder="中文或英文字符"
+                   th:value="${updateTeacher!=null}?${updateTeacher.address}">
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="${updateTeacher!=null}?确认修改:确认添加"></button>
+    </form>
+</main>
+</div>
+</div>
+
+
+</body>
+
+</html>

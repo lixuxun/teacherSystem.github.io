@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en">
+<head>
+    <head th:replace="~{menu::head}">
+    </head>
+    <title>查询功能</title>
+</head>
+
+
+<body background="asserts/img/timg7BE4U3YK.jpg" style="background-size: 100%">
+<div th:replace="~{menu::topBar}"></div>
+<div th:replace="~{menu::menuBar}"></div>
+
+</nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <!--<h2><a class="btn btn-sm btn-success" th:href="@{/emp}">查询</a></h2>-->
+    <form method="get" th:action="getTeacherByIdOrName">
+        <input name="IdOrName" type="text" th:placeholder="输入id或者姓名查询">
+        <button class="btn btn-sm btn-primary" style="right: 0px" type="submit" th:text="查询"></button>
+    </form>
+    <div th:replace="~{list::list}"></div>
+    </div>
+</main>
+</div>
+</div>
+
+
+</body>
+
+</html>
