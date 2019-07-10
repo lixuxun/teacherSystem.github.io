@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shop.dao.OderDao">
+
+
+	<!-- 商品出库 -->
+	<update id="cksh" parameterType="org.shop.pojo.Oder">
+		update sh set sh=#{sh} where id=#{id}
+	</update>
+	<insert id="ck" parameterType="org.shop.pojo.Oder">
+		insert into sh(hw,name,phone,date,money,jg,lr,sh,sl,zrr)
+		value(#{hw},#{name},#{phone},#{date},#{money},#{jg},#{lr},#{sh},#{sl},#{zrr})
+	</insert>
+	<delete id="jj" parameterType="int">
+		delete from sh where id=#{id}
+	</delete>
+
+	<select id="cc" parameterType="int" resultType="map">
+		select * from sh where sh=0
+	</select>
+	<select id="hws" parameterType="String" resultType="map">
+		select * from sh where hw=#{hw}
+	</select>
+	<select id="hwss" parameterType="int" resultType="org.shop.pojo.Oder">
+		select * from sh where id=#{id}
+	</select>
+
+	<!-- 商品销售记录 -->
+	<select id="spXsHistory" parameterType="org.shop.pojo.Oder" resultType="map">
+		select * from sh where sh=#{sh}
+		<if test="name != null">
+			and hw like "%"#{name}"%"
+		</if>
+	</select>
+
+
+</mapper>
